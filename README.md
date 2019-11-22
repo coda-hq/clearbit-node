@@ -124,28 +124,4 @@ Prospector.search({domain: 'clearbit.com'})
 ```
 
 ### Error Handling
-Lookups return [Bluebird](https://github.com/petkaantonov/bluebird) promises. Any status code >=400 will trigger an error, including lookups than do not return a result. You can easily filter out unknown records from true errors using [Bluebird's error class matching](https://github.com/petkaantonov/bluebird/blob/master/API.md#catchfunction-errorclassfunction-predicate-function-handler---promise):
-
-```js
-Person.find({email: 'notfound@example.com'})
-  .catch(Person.NotFoundError, function () {
-    // handle an unknown record
-  })
-  .catch(function () {
-    // handle other errors
-  });
-```
-
-### Callbacks
-If you really want to use node-style callbacks, use [Bluebird's nodeify method](https://github.com/petkaantonov/bluebird/blob/master/API.md#nodeifyfunction-callback--object-options---promise):
-
-```js
-Person.find({email: 'email@domain.com'}).nodeify(function (err, person) {
-  if (err) {
-    // handle
-  }
-  else {
-    // person
-  }
-});
-```
+Lookups return native promises. Any status code >=400 will trigger an error, including lookups than do not return a result.

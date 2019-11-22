@@ -1,13 +1,13 @@
 'use strict';
 
-var assert      = require('assert');
-var util        = require('util');
-var _           = require('lodash');
-var Promise     = require('bluebird');
-var createError = require('create-error');
-var http        = require('http');
-var needle      = Promise.promisifyAll(require('needle'));
-var pkg         = require('../package.json');
+var assert       = require('assert');
+var util         = require('util');
+var _            = require('lodash');
+var promisifyAll = require('util-promisifyall');
+var createError  = require('create-error');
+var http         = require('http');
+var needle       = promisifyAll(require('needle'));
+var pkg          = require('../package.json');
 
 function ClearbitClient (config) {
   config = config || {};
